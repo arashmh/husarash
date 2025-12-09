@@ -1,27 +1,92 @@
 {
   "urls": [
-    "https://danbolig.dk/bolig/faxe/4653/villa/6030000131-603/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral#Kort",
-    "https://www.edc.dk/alle-boliger/villa/4440-moerkoev/ulkestrupvej-8/44505866/",
-    "https://danbolig.dk/bolig/stevns/4652/villa/6030000120-603/",
-    "https://www.nybolig.dk/villa/4672/gammelskolevej/n270214/n2702140000393",
-    "https://www.nybolig.dk/villa/4660/oestergade/n270214/n2702140000318",
-    "https://www.nybolig.dk/villa/4500/blichersvej/n105694/n1056940000742",
-    "https://www.nybolig.dk/villa/4520/kirkebakken/n102761/n1027610000181",
-    "https://www.nybolig.dk/villa/4591/havnsoegaardsvej/n103682/n1036820000508",
-    "https://danbolig.dk/bolig/slagelse/4230/villa/3200000663-320/#Kort",
-    "https://home.dk/salg/huse-villaer/ny-harloesevej-7-3320-skaevinge/sag-1150002443/",
-    "https://www.nybolig.dk/villa/4500/gelstrupvej/n105694/n1056940000962",
-    "https://www.nybolig.dk/villa/4420/troenningeby/n260404/n2604040000732",
-    "https://www.edc.dk/alle-boliger/villa/4500-nykoebing-sj/roervigvej-100/45004054/",
-    "https://www.nybolig.dk/villa/4281/falkensoevej/n103682/115398?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://danbolig.dk/bolig/holbaek/4440/villa/0140005334-014/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://danbolig.dk/bolig/faxe/4653/villa/6030000131-603/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://www.realmaeglerne.dk/bolig/370-6264-flinterupvej-5-bjerge",
-    "https://www.nybolig.dk/villa/4200/noerreaas/n104918/n1049180000996?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://www.nybolig.dk/villa/4295/ostrupvej/n103682/n1036820000414?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://danbolig.dk/bolig/odsherred/4540/villa/0770000972-077/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://home.dk/salg/huse-villaer/bildsoevej-143-4200-slagelse/sag-2080002499/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://www.nybolig.dk/villa/4573/bagkirken/n105694/n1056940000285?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral",
-    "https://danbolig.dk/bolig/kalundborg/4470/villa/2470001544-247/?utm_campaign=boligsiden&utm_source=boligsiden.dk&utm_medium=referral"
+    {
+      "url": "https://danbolig.dk/bolig/faxe/4653/villa/6030000131-603",
+      "title": "Karisevej 155, Druestrup Ov"
+    },
+    {
+      "url": "https://www.edc.dk/alle-boliger/villa/4440-moerkoev/ulkestrupvej-8/44505866",
+      "title": "Ulkestrupvej 8, Ulkestrup"
+    },
+    {
+      "url": "https://danbolig.dk/bolig/stevns/4652/villa/6030000120-603",
+      "title": "<bad>Søndergade 19 - Villa til Salg | danbolig"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4672/gammelskolevej/n270214/n2702140000393",
+      "title": "Gammel Skolevej 8A, 4672 Klippinge"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4660/oestergade/n270214/n2702140000318",
+      "title": "Østergade 37, 4660 Store Heddinge"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4500/blichersvej/n105694/n1056940000742",
+      "title": "Blichersvej 4, 4500 Nykøbing Sj"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4520/kirkebakken/n102761/n1027610000181",
+      "title": "Kirkebakken 14, Kundby, 4520 Svinninge"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4591/havnsoegaardsvej/n103682/n1036820000508",
+      "title": "Havnsøgårdsvej 24, Havnsø, 4591 Føllenslev"
+    },
+    {
+      "url": "https://danbolig.dk/bolig/slagelse/4230/villa/3200000663-320",
+      "title": "Ørslevvej 140, Ørslev"
+    },
+    {
+      "url": "https://home.dk/salg/huse-villaer/ny-harloesevej-7-3320-skaevinge/sag-1150002443",
+      "title": "Villa til salg: Ny Harløsevej 7, 3320 Skævinge"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4500/gelstrupvej/n105694/n1056940000962",
+      "title": "Gelstrupvej 6, Egebjerg, 4500 Nykøbing Sj"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4420/troenningeby/n260404/n2604040000732",
+      "title": "Trønninge By 16, 4420 Regstrup"
+    },
+    {
+      "url": "https://www.edc.dk/alle-boliger/villa/4500-nykoebing-sj/roervigvej-100/45004054",
+      "title": "<bad>Villa til salg - Rørvigvej 100"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4281/falkensoevej/n103682/115398",
+      "title": "Falkensøvej 3, Kirke Helsinge, 4281 Gørlev"
+    },
+    {
+      "url": "https://danbolig.dk/bolig/holbaek/4440/villa/0140005334-014",
+      "title": "<bad>Ibs Huse 13 - Villa til Salg | danbolig"
+    },
+    {
+      "url": "https://www.realmaeglerne.dk/bolig/370-6264-flinterupvej-5-bjerge",
+      "title": "6264 Flinterupvej 5, Bjerge"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4200/noerreaas/n104918/n1049180000996",
+      "title": "Nørreås 37, 4200 Slagelse"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4295/ostrupvej/n103682/n1036820000414",
+      "title": "Ostrupvej 3, 4295 Stenlille"
+    },
+    {
+      "url": "https://danbolig.dk/bolig/odsherred/4540/villa/0770000972-077",
+      "title": "<bad>Fårevejle Møllevej 2 - Villa til Salg | danbolig"
+    },
+    {
+      "url": "https://home.dk/salg/huse-villaer/bildsoevej-143-4200-slagelse/sag-2080002499",
+      "title": "Villa til salg: Bildsøvej 143, Næsby Strand, 4200 Slagelse"
+    },
+    {
+      "url": "https://www.nybolig.dk/villa/4573/bagkirken/n105694/n1056940000285",
+      "title": "<bad>Til salg - Bag Kirken 1D, 4573 Højby - Nybolig"
+    },
+    {
+      "url": "https://danbolig.dk/bolig/kalundborg/4470/villa/2470001544-247",
+      "title": "Smedestræde 11, Viskinge"
+    }
   ]
 }
