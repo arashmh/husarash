@@ -9,8 +9,15 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
         .container { max-width: 1400px; margin: 0 auto; }
         h1 { text-align: center; color: white; font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
-        .subtitle { text-align: center; color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; margin-bottom: 40px; }
+        .subtitle { text-align: center; color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; margin-bottom: 20px; }
+        
+        .filter-controls { text-align: center; margin-bottom: 30px; }
+        .filter-btn { padding: 12px 30px; background: white; color: #667eea; border: none; border-radius: 25px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .filter-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); }
+        .filter-btn.active { background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #333; }
+        
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 30px; }
+        .card.hidden { display: none; }
         
         @media (max-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
@@ -121,6 +128,36 @@
         .card:hover .index-badge::after {
             opacity: 0.3;
         }
+        
+        .star-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid white;
+            animation: starPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .card:hover .star-badge {
+            transform: scale(1.2) rotate(15deg);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
 
         .visit-btn { display: inline-block; width: 100%; padding: 10px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; text-align: center; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
         .visit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
@@ -135,6 +172,9 @@
     <div class="container">
         <h1>🔗 URL Collection</h1>
         <p class="subtitle" id="subtitle">Loading...</p>
+        <div class="filter-controls">
+            <button class="filter-btn" id="filterBtn" onclick="toggleStarredFilter()">⭐ Show Starred Only</button>
+        </div>
         <div id="content">
             <div class="loading">
                 <div class="spinner"></div>
@@ -144,12 +184,49 @@
     </div>
 
     <script>
+        let starredIndices = new Set();
+        let showOnlyStarred = false;
+        
         function makeGoogleMapsSearchUrl(address) {
             const encoded = encodeURIComponent(address);
             return `https://www.google.com/maps/search/?api=1&query=${encoded}`;
         }
+        
+        async function loadStarredIndices() {
+            try {
+                const response = await fetch('starred.txt');
+                if (!response.ok) return;
+                const text = await response.text();
+                const indices = text.trim().split('\n').map(line => parseInt(line.trim())).filter(n => !isNaN(n));
+                starredIndices = new Set(indices);
+            } catch (error) {
+                console.error('Could not load starred.txt:', error);
+            }
+        }
+        
+        function toggleStarredFilter() {
+            showOnlyStarred = !showOnlyStarred;
+            const filterBtn = document.getElementById('filterBtn');
+            const cards = document.querySelectorAll('.card');
+            
+            if (showOnlyStarred) {
+                filterBtn.classList.add('active');
+                filterBtn.innerHTML = '🌟 Showing Starred (Click to Show All)';
+                cards.forEach(card => {
+                    const isStarred = card.dataset.starred === 'true';
+                    if (!isStarred) {
+                        card.classList.add('hidden');
+                    }
+                });
+            } else {
+                filterBtn.classList.remove('active');
+                filterBtn.innerHTML = '⭐ Show Starred Only';
+                cards.forEach(card => card.classList.remove('hidden'));
+            }
+        }
 
         async function loadURLs() {
+            await loadStarredIndices();
             try {
                 const response = await fetch('final_urls.json');
                 if (!response.ok) throw new Error('Could not load final_urls.json');
@@ -166,7 +243,8 @@
                 for (let index = 0; index < urlEntries.length; index++) {
                     const entry = urlEntries[index];
                     const url = entry.url || entry;  // Handle both old and new format
-                    const card = await createCard(url, index);
+                    const isStarred = starredIndices.has(index);
+                    const card = await createCard(url, index, isStarred);
                     gridDiv.appendChild(card);
                 }
                 
@@ -183,9 +261,10 @@
             }
         }
 
-        async function createCard(url, index) {
+        async function createCard(url, index, isStarred) {
             const card = document.createElement('div');
             card.className = 'card';
+            card.dataset.starred = isStarred;
             card.style.animation = `fadeIn 0.5s ease ${index * 0.05}s both`;
             
             // Get title from entry or use URL as fallback
@@ -266,6 +345,15 @@
             indexBadge.className = 'index-badge';
             indexBadge.textContent = index;
             previewDiv.appendChild(indexBadge);
+            
+            // Add star badge if this house is starred
+            if (isStarred) {
+                const starBadge = document.createElement('div');
+                starBadge.className = 'star-badge';
+                starBadge.textContent = '⭐';
+                starBadge.title = 'Starred Property';
+                previewDiv.appendChild(starBadge);
+            }
             
             // Check if title has <bad> flag
             let displayTitle = title;
