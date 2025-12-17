@@ -237,6 +237,8 @@
                 document.getElementById('subtitle').textContent = `${urlEntries.length} URL${urlEntries.length !== 1 ? 's' : ''} in collection`;
                 
                 const contentDiv = document.getElementById('content');
+                contentDiv.innerHTML = '<div class="loading"><div class="spinner"></div><span id="loadingText">Loading URLs... 0/' + urlEntries.length + '</span></div>';
+                
                 const gridDiv = document.createElement('div');
                 gridDiv.className = 'grid';
                 
@@ -246,6 +248,12 @@
                     const isStarred = starredIndices.has(index);
                     const card = await createCard(url, index, isStarred);
                     gridDiv.appendChild(card);
+                    
+                    // Update loading progress
+                    const loadingText = document.getElementById('loadingText');
+                    if (loadingText) {
+                        loadingText.textContent = `Loading URLs... ${index + 1}/${urlEntries.length}`;
+                    }
                 }
                 
                 contentDiv.innerHTML = '';
